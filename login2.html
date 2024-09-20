@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+body{
+            height: 100vh;
+           display: flex;
+           flex-direction: column;
+           justify-content: center;
+           align-items: center;
+           background-color:cornflowerblue;
+        }
+        .user,.pass{
+            font-size: larger;
+            border: 2px solid blue;
+            height: 30px;
+            width:500px;
+            
+        }
+        .btn{
+           height: 40px;
+           width:200px;
+           position: relative;
+           left: 150px;
+           color: wheat;
+           background-color:blue;
+           border: 2px solid white;
+        }
+        .para{
+            margin-top: 20px;
+            font-size: 35px;
+            position: relative;
+            left: 150px;
+            text-transform: capitalize;
+        }
+</style>
+<body>
+    <form action="">
+        <input class="user" type="text" name="" id="user1">
+        <br><br>
+        <input class="pass" type="text" id="pass1">
+        <br><br>
+        <input class= "btn" type="button" value="login" id="login">
+
+        <p id="para" class="para"></p>
+    </form>
+    <script>
+        var button1=document.getElementById("login");
+        button1.addEventListener("click",function(){
+            var user=document.getElementById("user1").value;
+            var pass=document.getElementById("pass1").value;
+
+            let getresults=localStorage.getItem("data");
+            result=JSON.parse(getresults)
+            let newarr=[]
+
+            for(i=0;i<result.length;i++){
+                if(result[i].username==user){
+                    newarr.push(result[i])
+                }
+            }
+            console.log(newarr)
+            if(newarr.length>0){
+                if(newarr[0].username==user && newarr[0].password==pass){
+                    var para=document.getElementById("para").textContent="Hello "+user+" welcome to login page"
+                     
+                    
+                }
+                else{
+                    alert("incorrect inputs")
+
+                }
+
+            }else if(user.length==0 || pass.length==0){
+                alert("please fill the input values")
+            }
+            
+
+
+            
+
+            
+        })
+        
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 100vh;
+           display: flex;
+           flex-direction: column;
+           justify-content: center;
+           align-items: center;
+           background-color: antiquewhite;
+        }
+        .user,.pass{
+            font-size: larger;
+            border: 2px solid blue;
+            height: 30px;
+            width:500px;
+            
+        }
+        .btn{
+           height: 40px;
+           width:200px;
+           position: relative;
+           left: 150px;
+           color: wheat;
+           background-color: blue;
+           border: 2px solid white;
+        }
+    </style>
+</head>
+<body>
+    <h1>REGISTER HERE FOR LOGIN</h1>
+    <form action="">
+
+        <input class="user" type="text" name="" id="username" ><br><br>
+
+        <input class="pass" type="text" name="" id="password"><br><br>
+
+        <input class="btn" type="button" value="Register" id="register">
+    </form>
+    <script>
+    var regbtn=document.getElementById("register");
+    array=[]
+    regbtn.addEventListener('click',function(e){
+       
+        let username=document.getElementById("username").value;
+        let password=document.getElementById("password").value;
+
+        let object={
+            username:username,
+            password:password
+        }
+        array.push(object)
+
+        localStorage.setItem("data",JSON.stringify(array));
+
+        let y=confirm("Registration completed.Do want to go login page");
+        if(y){
+            window.location.assign("./login2.html")
+        }
+        else{
+            alert("please register")
+        }
+    })
+    </script>
+</body>
+</html>
